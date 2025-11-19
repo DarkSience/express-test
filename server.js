@@ -67,9 +67,21 @@ app.get("/clear", (req, res) => {
     }
 });
 
+app.get("/logs", (req, res) => {
+    const filePath = path.join(__dirname, "logs", "logs.txt");
+
+    fs.readFile(filePath, "utf8", (err, data) => {
+        if (err) {
+            return res.status(500).send("Error reading logs: " + err.message);
+        }
+        res.send(data);
+    });
+});
+
 app.get(/\/*/, (req, res) => {
     res.status(404).send("Nothing here :3");
 })
+
 
 
 
