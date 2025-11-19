@@ -81,7 +81,7 @@ app.get("/logs", (req, res) => {
 });
 
 
-app.get("/*", (req, res) => {
+app.get(/\/*/, (req, res) => {
     res.status(404).send("Nothing here :3");
 });
 
